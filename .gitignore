@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-single
+dist-ssr
+*.local
+.DS_Store
+.vite
+
+# Temp verification scripts (local only)
+scripts/
+
+# Local screenshot output
+scratch-shots/
