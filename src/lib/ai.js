@@ -10,9 +10,9 @@ import Anthropic from '@anthropic-ai/sdk'
 import { athleteLevel, LEVELS } from './level.js'
 import { loadSeasons } from './storage.js'
 
-const KEY_STORE = 'pitusa.ai.key.v1'
-const MODEL_STORE = 'pitusa.ai.model.v1'
-const WHY_STORE = 'pitusa.ai.why.v1'
+const KEY_STORE = 'rtncaa-soccer.ai.key.v1'
+const MODEL_STORE = 'rtncaa-soccer.ai.model.v1'
+const WHY_STORE = 'rtncaa-soccer.ai.why.v1'
 
 export const MODELS = [
   { id: 'claude-haiku-4-5', label: 'Haiku 4.5 — le moins cher', cost: '~1–2 ¢ / usage' },

@@ -1,7 +1,7 @@
 // Persistance locale (dans le navigateur) — pas de serveur, 100% chez toi.
-// Tout est stocké sous le préfixe « pitusa. » (cf. backup.js).
+// Tout est stocké sous le préfixe « rtncaa-soccer. » (cf. backup.js).
 
-const KEY = 'pitusa.favorites.v1'
+const KEY = 'rtncaa-soccer.favorites.v1'
 
 export function loadFavorites() {
   try {
@@ -21,7 +21,7 @@ export function saveFavorites(set) {
 }
 
 // --- Champs éditables de la fiche athlète (email, poste, physique, bio...) ---
-const EXTRAS_KEY = 'pitusa.profileExtras.v1'
+const EXTRAS_KEY = 'rtncaa-soccer.profileExtras.v1'
 
 export function loadProfileExtras() {
   try {
@@ -41,7 +41,7 @@ export function saveProfileExtras(obj) {
 }
 
 // --- Carnet de contacts coachs ---
-const COACHES_KEY = 'pitusa.coaches.v1'
+const COACHES_KEY = 'rtncaa-soccer.coaches.v1'
 
 export function loadCoaches() {
   try {
@@ -62,7 +62,7 @@ export function saveCoaches(arr) {
 
 // --- Stats par saison (club, division, matchs, buts, passes) ---
 // Entrée : { id, season:'2024-25', club, league, apps, goals, assists, note }
-const SEASONS_KEY = 'pitusa.seasons.v1'
+const SEASONS_KEY = 'rtncaa-soccer.seasons.v1'
 
 export function loadSeasons() {
   try {
@@ -84,7 +84,7 @@ export function saveSeasons(arr) {
 
 // --- Palmarès & sélections (titres, équipe nationale jeunes, tournois) ---
 // Entrée : { id, year:'2025', text }
-const PALMARES_KEY = 'pitusa.palmares.v1'
+const PALMARES_KEY = 'rtncaa-soccer.palmares.v1'
 
 export function loadPalmares() {
   try {
@@ -105,7 +105,7 @@ export function savePalmares(arr) {
 }
 
 // --- Bulletin (matières & notes) pour le calcul du GPA ---
-const GPA_KEY = 'pitusa.gpa.v1'
+const GPA_KEY = 'rtncaa-soccer.gpa.v1'
 
 export function loadGpaSubjects() {
   try {
@@ -124,7 +124,7 @@ export function saveGpaSubjects(arr) {
   }
 }
 
-const GPA_SCALE_KEY = 'pitusa.gpascale.v1'
+const GPA_SCALE_KEY = 'rtncaa-soccer.gpascale.v1'
 export function loadGpaScale() {
   try {
     // Défaut % (échelle courante en Belgique) ; '20' seulement si explicitement choisi.
@@ -142,7 +142,7 @@ export function saveGpaScale(scale) {
 }
 
 // --- « Ma présentation » (à propos + instagram + contact) pour les coachs ---
-const ABOUT_KEY = 'pitusa.about.v1'
+const ABOUT_KEY = 'rtncaa-soccer.about.v1'
 
 export function loadAbout() {
   try {
@@ -162,7 +162,7 @@ export function saveAbout(obj) {
 }
 
 // --- Thème clair / sombre ---
-const THEME_KEY = 'pitusa.theme.v1'
+const THEME_KEY = 'rtncaa-soccer.theme.v1'
 
 export function loadTheme() {
   try {
@@ -184,7 +184,7 @@ export function saveTheme(theme) {
 }
 
 // --- Checklist des démarches (cases cochées) ---
-const CHECKLIST_KEY = 'pitusa.checklist.v1'
+const CHECKLIST_KEY = 'rtncaa-soccer.checklist.v1'
 
 export function loadChecklist() {
   try {

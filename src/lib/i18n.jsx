@@ -5,7 +5,7 @@
 // ---------------------------------------------------------------------------
 import { createContext, useContext, useEffect, useState } from 'react'
 
-const KEY = 'pitusa.lang.v1'
+const KEY = 'rtncaa-soccer.lang.v1'
 const LangContext = createContext({ lang: 'fr', setLang: () => {}, t: (fr) => fr })
 
 export function LanguageProvider({ children }) {

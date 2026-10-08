@@ -2,10 +2,10 @@
 // Sauvegarde / restauration de TOUTES les données locales de l'app
 // (stats, palmarès, favoris, coachs, démarches, fiche, langue…).
 // Permet de passer d'un appareil à l'autre et de garder un backup, sans serveur.
-// Tout est stocké sous le préfixe « pitusa. » dans le localStorage.
+// Tout est stocké sous le préfixe « rtncaa-soccer. » dans le localStorage.
 // ---------------------------------------------------------------------------
 
-const PREFIX = 'pitusa.'
+const PREFIX = 'rtncaa-soccer.'
 
 export function buildBackup() {
   const data = {}
