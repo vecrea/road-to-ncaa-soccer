@@ -11,7 +11,6 @@ const TABS = [
   { key: 'stats', label: 'Mes stats', labelEn: 'My stats' },
   { key: 'coaches', label: 'Coachs', labelEn: 'Coaches' },
   { key: 'steps', label: 'Démarches', labelEn: 'Steps' },
-  { key: 'ia', label: 'Assistant IA', labelEn: 'AI' },
   { key: 'profile', label: 'Profil', labelEn: 'Profile' },
 ]
 

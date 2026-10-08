@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { loadCoaches, saveCoaches, loadProfileExtras } from '../lib/storage.js'
 import { VERIFIED_COACHES, COACHES_AS_OF } from '../data/coaches.js'
-import { draftCoachEmail, hasApiKey } from '../lib/ai.js'
 import { buildCoachEmail } from '../lib/emailTemplate.js'
 import { useLang } from '../lib/i18n.jsx'
 
@@ -28,39 +27,19 @@ export default function Coaches({ unis, favorites, profile }) {
   const [contacts, setContacts] = useState(() => loadCoaches())
   const [form, setForm] = useState(null) // null = fermé, sinon brouillon
   const [emails, setEmails] = useState({}) // { [id]: texte }
-  const [emailLoading, setEmailLoading] = useState(null) // id en cours
-  const [emailErr, setEmailErr] = useState({}) // { [id]: message }
 
   useEffect(() => saveCoaches(contacts), [contacts])
 
   const extras = useMemo(() => loadProfileExtras(), [])
 
-  // Email d'intro pré-rempli, sans clé API (modèle).
+  // Email d'intro pré-rempli (modèle, sans IA).
   const genTemplate = (c) => {
     const { subject, body } = buildCoachEmail(profile, c, extras)
     setEmails((m) => ({ ...m, [c.id]: `Subject: ${subject}\n\n${body}` }))
-    setEmailErr((e) => ({ ...e, [c.id]: '' }))
   }
 
   const stLabel = (s) => t(STATUS[s].label, STATUS[s].labelEn)
-  const noKeyMsg = t('Ajoute ta clé API dans l’onglet « IA ».', 'Add your API key in the “AI” tab.')
 
-  const genEmail = async (c) => {
-    setEmailErr((e) => ({ ...e, [c.id]: '' }))
-    if (!hasApiKey()) {
-      setEmailErr((e) => ({ ...e, [c.id]: noKeyMsg }))
-      return
-    }
-    setEmailLoading(c.id)
-    try {
-      const txt = await draftCoachEmail(profile, c)
-      setEmails((m) => ({ ...m, [c.id]: txt }))
-    } catch (err) {
-      setEmailErr((e) => ({ ...e, [c.id]: err?.message === 'NO_KEY' ? noKeyMsg : t('Erreur IA : ', 'AI error: ') + (err?.message || t('réessaie', 'try again')) }))
-    } finally {
-      setEmailLoading(null)
-    }
-  }
   const copyEmail = (id) => {
     try {
       navigator.clipboard?.writeText(emails[id] || '')
@@ -283,26 +262,17 @@ export default function Coaches({ unis, favorites, profile }) {
                   <button onClick={() => remove(c.id)} className="text-xs font-semibold text-flag-500 hover:underline">
                     {t('Supprimer', 'Delete')}
                   </button>
-                  <div className="ml-auto flex gap-1.5">
+                  <div className="ml-auto">
                     <button
                       onClick={() => genTemplate(c)}
                       className="rounded-full bg-pool-500 px-3 py-1 text-xs font-bold text-white transition hover:bg-pool-600"
-                      title={t('Email pré-rempli, sans clé API', 'Pre-filled email, no API key')}
+                      title={t('Génère un email d’intro pré-rempli à personnaliser', 'Generates a pre-filled intro email to personalize')}
                     >
-                      {t('Email (modèle)', 'Email (template)')}
-                    </button>
-                    <button
-                      onClick={() => genEmail(c)}
-                      disabled={emailLoading === c.id}
-                      className="rounded-full bg-navy-900 px-3 py-1 text-xs font-bold text-white transition hover:bg-navy-800 disabled:opacity-50"
-                      title={t('Version IA (nécessite une clé API, onglet IA)', 'AI version (requires an API key, AI tab)')}
-                    >
-                      {emailLoading === c.id ? t('Rédaction…', 'Drafting…') : t('IA', 'AI')}
+                      {t('Générer un email', 'Generate email')}
                     </button>
                   </div>
                 </div>
 
-                {emailErr[c.id] && <p className="mt-2 text-xs text-flag-600 dark:text-flag-400">{emailErr[c.id]}</p>}
                 {emails[c.id] && (
                   <div className="mt-3">
                     <textarea

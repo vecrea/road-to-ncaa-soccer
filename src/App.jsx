@@ -11,7 +11,6 @@ import Dashboard from './components/Dashboard.jsx'
 import StatsTracker from './components/StatsTracker.jsx'
 import Coaches from './components/Coaches.jsx'
 import Steps from './components/Steps.jsx'
-import Ia from './components/Ia.jsx'
 import AboutMe from './components/AboutMe.jsx'
 import { profile } from './data/profile.js'
 import { universities } from './data/schools.js'
@@ -180,8 +179,6 @@ export default function App() {
         return <Coaches unis={matchesLoc} favorites={favorites} profile={effProfile} />
       case 'steps':
         return <Steps />
-      case 'ia':
-        return <Ia />
       case 'profile':
         return <ProfileCard profile={effProfile} />
       default:

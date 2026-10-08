@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Stat, FitBadge, ScorePill, TypeBadge, divColor } from './ui.jsx'
 import { NCSA_URL, siteLink } from '../data/universities.js'
 import { VERIFIED_COACHES, coachsStaffLink, COACHES_AS_OF } from '../data/coaches.js'
-import { explainFit, loadWhyCache, saveWhy, hasApiKey } from '../lib/ai.js'
 import { netCost } from '../lib/cost.js'
 import { scholarshipPotential, capFirst } from '../lib/scholarship.js'
 import { useLang } from '../lib/i18n.jsx'
@@ -11,33 +10,8 @@ export default function UniversityCard({ u, isFav, onToggleFav, profile }) {
   const { t, lang } = useLang()
   const [open, setOpen] = useState(false)
   const coaches = VERIFIED_COACHES[u.id]
-  const [why, setWhy] = useState(() => loadWhyCache()[u.id] || '')
-  const [whyLoading, setWhyLoading] = useState(false)
-  const [whyErr, setWhyErr] = useState('')
 
   const fmtCost = (n) => '$' + Math.round(n / 1000) + 'k' + t('/an', '/yr')
-
-  const askWhy = async () => {
-    setWhyErr('')
-    if (!hasApiKey()) {
-      setWhyErr(t('Ajoute ta clé API dans l’onglet « IA » pour activer ça.', 'Add your API key in the “AI” tab to enable this.'))
-      return
-    }
-    setWhyLoading(true)
-    try {
-      const txt = await explainFit(profile, u)
-      setWhy(txt)
-      saveWhy(u.id, txt)
-    } catch (e) {
-      setWhyErr(
-        e?.message === 'NO_KEY'
-          ? t('Ajoute ta clé API dans l’onglet « IA ».', 'Add your API key in the “AI” tab.')
-          : t('Erreur IA : ', 'AI error: ') + (e?.message || t('réessaie', 'try again')),
-      )
-    } finally {
-      setWhyLoading(false)
-    }
-  }
 
   return (
     <article className="transition-colors hover:surface-2">
@@ -222,21 +196,6 @@ export default function UniversityCard({ u, isFav, onToggleFav, profile }) {
                 <div className="text-[10px] font-medium uppercase tracking-wide text-tertiary">{label}</div>
               </div>
             ))}
-          </div>
-
-          <div className="rounded-lg surface border border-hair p-3">
-            <div className="flex items-center justify-between gap-2">
-              <span className="font-semibold text-heading">{t('Pourquoi cette fac ?', 'Why this school?')}</span>
-              <button
-                onClick={askWhy}
-                disabled={whyLoading}
-                className="rounded-full bg-pool-500 px-3 py-1 text-xs font-bold text-white transition hover:bg-pool-600 disabled:opacity-50"
-              >
-                {whyLoading ? t('Analyse…', 'Analyzing…') : why ? t('Régénérer', 'Regenerate') : t('Demander à l’IA', 'Ask the AI')}
-              </button>
-            </div>
-            {why && <p className="mt-2 whitespace-pre-line text-primary">{why}</p>}
-            {whyErr && <p className="mt-2 text-xs text-flag-500">{whyErr}</p>}
           </div>
         </div>
       )}

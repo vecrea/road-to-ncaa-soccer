@@ -1,18 +1,18 @@
 // ---------------------------------------------------------------------------
 // Checklist des démarches pour un joueur de football international (belge) visant une
 // entrée en fac US à l'automne 2028 (≈ recruiting class 2028).
-// Faits vérifiés (juin 2026) ; ⚠️ dates/frais changent : confirme via les liens.
+// Faits vérifiés (octobre 2026) ; ⚠️ dates/frais changent : confirme via les liens.
 // tag 'D1/D2' = ne concerne pas la Division 3. Bilingue (FR + EN).
 // ---------------------------------------------------------------------------
 
-export const CHECKLIST_AS_OF = 'juin 2026'
-export const CHECKLIST_AS_OF_EN = 'June 2026'
+export const CHECKLIST_AS_OF = 'octobre 2026'
+export const CHECKLIST_AS_OF_EN = 'October 2026'
 
 // Frise chronologique : grandes étapes datées jusqu'à la rentrée 2028,
 // calées sur le calendrier NCAA / visa. `iso` sert à situer « tu es ici ».
 export const ROADMAP = [
-  { iso: '2026-06-15', date: '15 juin 2026', dateEn: 'June 15, 2026', emoji: '📣', title: 'Ouverture des contacts coachs (D1)', titleEn: 'D1 coach contact window opens', detail: 'Les coachs D1 peuvent te contacter directement. Toi, tu peux les contacter quand tu veux — lance tes premiers emails !', detailEn: 'D1 coaches can contact you directly. You can reach out whenever — start your first emails!' },
-  { iso: '2026-09-01', date: 'Automne 2026', dateEn: 'Fall 2026', emoji: '🗂️', title: '5e secondaire — profils en ligne', titleEn: '5th secondary year — profiles online', detail: 'Profil de recrutement (NCSA, BeRecruited) + vidéo highlights à jour, fiche athlète prête, compte NCAA Eligibility Center créé.', detailEn: 'Recruiting profile (NCSA, BeRecruited) + highlight video up to date, athlete sheet ready, NCAA Eligibility Center account created.' },
+  { iso: '2026-06-15', date: 'Depuis juin 2026', dateEn: 'Since June 2026', emoji: '📣', title: 'Contacts coachs ouverts (D1)', titleEn: 'D1 coach contact window open', detail: 'Les coachs D1 peuvent déjà te contacter directement, et toi tu peux les contacter quand tu veux — lance tes premiers emails dès maintenant !', detailEn: 'D1 coaches can already contact you directly, and you can reach out whenever — start your first emails now!' },
+  { iso: '2026-10-01', date: 'Maintenant (automne 2026)', dateEn: 'Now (fall 2026)', emoji: '🗂️', title: 'Profils & vidéo en ligne', titleEn: 'Profiles & video online', detail: 'Priorité immédiate : profil de recrutement (NCSA, BeRecruited) + vidéo highlights à jour, fiche athlète prête, et compte NCAA Eligibility Center créé.', detailEn: 'Immediate priority: recruiting profile (NCSA, BeRecruited) + highlight video up to date, athlete sheet ready, and NCAA Eligibility Center account created.' },
   { iso: '2027-01-01', date: 'Hiver 2026-27', dateEn: 'Winter 2026-27', emoji: '🗣️', title: 'Tests d’anglais', titleEn: 'English tests', detail: 'Passe le TOEFL / IELTS / Duolingo (exigé par l’admission). Vise tôt pour pouvoir repasser si besoin.', detailEn: 'Take the TOEFL / IELTS / Duolingo (required by admissions). Aim early so you can retake if needed.' },
   { iso: '2027-06-01', date: 'Été 2027', dateEn: 'Summer 2027', emoji: '🎯', title: 'Shortlist resserrée + relances', titleEn: 'Tighter shortlist + follow-ups', detail: 'Cible 8 à 12 facs réalistes/objectifs et relance les coachs avec tes nouvelles stats et vidéos.', detailEn: 'Target 8 to 12 realistic/target schools and follow up with coaches with your new stats and videos.' },
   { iso: '2027-08-01', date: '1er août 2027', dateEn: 'August 1, 2027', emoji: '🏫', title: 'Visites de campus possibles', titleEn: 'Campus visits allowed', detail: 'Visites officielles et non officielles autorisées dès le 1er août avant ta dernière année.', detailEn: 'Official and unofficial visits allowed from August 1 before your final year.' },
